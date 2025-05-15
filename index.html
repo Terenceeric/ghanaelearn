@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghana eLearn - Modern eLearning Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://api.microlink.io/?url=https://paystack.com/favicon.ico" rel="icon" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- Add this line somewhere visible -->
+<p>Auto-deploy  test - 2025</p>
+    <!-- Header/Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>Ghana<span>eLearn</span></h1>
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="#" class="active" id="home-link">Home</a></li>
+                    <li><a href="#" id="practice-link">Practice Exam Questions</a></li>
+                    <li><a href="#" id="test-link">Take a Test</a></li>
+                    <li><a href="#" id="contact-link">Contact</a></li>
+                    <li><a href="#" id="login-link">Login</a></li>
+                    <li style="display: none;" id="admin-nav-item">
+    <a href="#admin" id="admin-link">Admin</a>
+</li>
+                    <li><a href="#" id="register-link" class="btn-register">Register</a></li>
+                    <li style="display: none;" id="admin-nav-item">
+                        <a href="#" id="admin-link">Admin</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Sections -->
+    <main class="main-content">
+        <!-- Home Section -->
+        <section id="home-section" class="section active">
+            <div class="hero">
+                <div class="container">
+                    <div class="hero-content">
+                        <h2>Master Your Exams with Ghana eLearn</h2>
+                        <p>Access premium exam questions, take practice tests, and track your progress with our modern eLearning platform.</p>
+                        <div class="hero-buttons">
+                            <a href="#" class="btn-primary" id="hero-practice-btn">Start Practicing</a>
+                            <a href="#" class="btn-secondary" id="hero-test-btn">Take a Test</a>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Students learning">
+                    </div>
+                </div>
+            </div>
+
+            <div class="features">
+                <div class="container">
+                    <h3>Why Choose Ghana eLearn?</h3>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <i class="fas fa-book-open"></i>
+                            <h4>Comprehensive Questions</h4>
+                            <p>Thousands of exam questions covering all subjects and levels.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h4>Mobile Friendly</h4>
+                            <p>Access your study materials anytime, anywhere on any device.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-chart-line"></i>
+                            <h4>Performance Tracking</h4>
+                            <p>Monitor your progress and identify areas for improvement.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <h4>Ghanaian Payments</h4>
+                            <p>Convenient payment options including Mobile Money and Paystack.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Practice Questions Section -->
+        <section id="practice-section" class="section">
+            <div class="container">
+                <h2>Practice Exam Questions</h2>
+                <p class="section-description">Practice with our extensive question bank. Registered users get access to more questions and detailed explanations.</p>
+                
+                <!-- Progress Tracking Per Subject -->
+                <div class="progress-tracking">
+                    <h3>Your Progress</h3>
+                    <div class="progress-grid" id="progress-grid">
+                        <!-- Progress bars will be loaded here via JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="practice-options">
+                    <div class="mode-selection">
+                        <h3>Practice Mode</h3>
+                        <div class="mode-buttons">
+                            <button class="mode-btn active" data-mode="standard">Standard</button>
+                            <button class="mode-btn" data-mode="timed">Timed Practice</button>
+                            <button class="mode-btn" data-mode="flashcards">Flashcards</button>
+                        </div>
+                    </div>
+                    
+                    <div class="subject-selection" id="practice-subject-selection">
+                        <h3>Select Subject</h3>
+                        <div class="subject-buttons">
+                            <button class="subject-btn active" data-subject="social-studies">Social Studies</button>
+                            <button class="subject-btn" data-subject="mathematics">Mathematics</button>
+                            <button class="subject-btn" data-subject="integrated-science">Integrated Science</button>
+                            <button class="subject-btn" data-subject="english">English</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Timed Practice Controls (hidden by default) -->
+                <div class="timed-controls" id="timed-controls" style="display: none;">
+                    <div class="form-group">
+                        <label for="practice-time">Set Practice Time (minutes)</label>
+                        <input type="number" id="practice-time" min="1" max="60" value="15">
+                    </div>
+                    <button class="btn-primary" id="start-timed-practice">Start Timed Practice</button>
+                </div>
+                
+                <div class="auth-notice" id="practice-auth-notice">
+                    <p>You're viewing limited practice questions. <a href="#" id="practice-register-link">Register</a> or <a href="#" id="practice-login-link">Login</a> for full access.</p>
+                </div>
+                
+                <div class="practice-stats" id="practice-stats">
+                    <div class="stat-item">
+                        <span id="questions-remaining">Total Questions: Loading...</span>
+                    </div>
+                    <div class="stat-item">
+                        <span id="current-set">Current Set: 1/1</span>
+                    </div>
+                    <div class="stat-item">
+                        <span id="time-remaining" style="display: none;">Time Remaining: 15:00</span>
+                    </div>
+                </div>
+                
+                <!-- Loading Indicator -->
+                <div class="loading-indicator" id="practice-loading-indicator">
+                    <div class="spinner"></div>
+                    <p>Loading questions...</p>
+                </div>
+                
+                <div class="questions-container" id="practice-questions-container">
+                    <!-- Questions will be loaded here via JavaScript -->
+                </div>
+                
+                <!-- Pagination Controls -->
+                <div class="pagination" id="practice-pagination">
+                    <button class="pagination-btn" id="prev-page" disabled>&laquo; Previous</button>
+                    <span id="page-info">Page 1 of 1</span>
+                    <button class="pagination-btn" id="next-page" disabled>Next &raquo;</button>
+                </div>
+                
+                <div class="practice-actions" id="practice-actions">
+                    <button class="btn-primary" id="practice-load-more">Load More Questions</button>
+                </div>
+                
+                <div class="practice-complete-actions" id="practice-complete-actions" style="display: none;">
+                    <h3>Practice Session Complete!</h3>
+                    <div class="action-buttons">
+                        <button class="action-btn take-test" id="take-test-btn">
+                            <span class="icon">📝</span>
+                            <span class="text">Take a Test</span>
+                        </button>
+                        <button class="action-btn repeat-questions" id="repeat-questions-btn">
+                            <span class="icon">🔄</span>
+                            <span class="text">Repeat Same Questions</span>
+                        </button>
+                        <button class="action-btn new-questions" id="new-questions-btn">
+                            <span class="icon">✨</span>
+                            <span class="text">Practice New Questions</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Test Section -->
+        <section id="test-section" class="section">
+            <div class="container">
+                <h2>Take a Test</h2>
+                <p class="section-description">Test your knowledge with timed quizzes. Get detailed results and explanations.</p>
+                
+                <div class="subject-selection" id="test-subject-selection">
+                    <h3>Select Subject</h3>
+                    <div class="subject-buttons">
+                        <button class="subject-btn active" data-subject="social-studies">Social Studies</button>
+                        <button class="subject-btn" data-subject="mathematics">Mathematics</button>
+                        <button class="subject-btn" data-subject="integrated-science">Integrated Science</button>
+                        <button class="subject-btn" data-subject="english">English</button>
+                    </div>
+                </div>
+                
+                <div class="auth-notice" id="test-auth-notice">
+                    <p>You're viewing a sample test. <a href="#" id="test-register-link">Register</a> or <a href="#" id="test-login-link">Login</a> to access full tests and save your results.</p>
+                </div>
+                
+                <div class="test-controls">
+                    <div class="test-info">
+                        <span id="test-timer">Time: 15:00</span>
+                        <span id="test-progress">Question 1 of 5</span>
+                    </div>
+                </div>
+                
+                <div class="test-container" id="test-questions-container">
+                    <!-- Test questions will be loaded here via JavaScript -->
+                </div>
+                
+                <div class="test-actions">
+                    <button class="btn-secondary" id="test-next-btn">Next Question</button>
+                    <button class="btn-primary" id="test-submit-btn" style="display: none;">Submit Test</button>
+                </div>
+                
+                <div class="test-results" id="test-results-container">
+                    <!-- Results will be displayed here -->
+                </div>
+                
+                <!-- Leaderboard Section -->
+                <div class="leaderboard-container" id="leaderboard-container" style="display: none;">
+                    <h3>Top Performers</h3>
+                    <div class="leaderboard" id="leaderboard">
+                        <!-- Leaderboard will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact-section" class="section">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Get in Touch</h3>
+                        <p>Have questions or feedback? We'd love to hear from you!</p>
+                        <ul class="contact-details">
+                            <li><i class="fas fa-envelope"></i> info@ghanaelearn.com</li>
+                            <li><i class="fas fa-phone"></i> +233 123 456 789</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Accra, Ghana</li>
+                        </ul>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <input type="text" id="contact-name" placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="contact-email" placeholder="Your Email" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="contact-subject" placeholder="Subject">
+                            </div>
+                            <div class="form-group">
+                                <textarea id="contact-message" rows="5" placeholder="Your Message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Admin Section (Content Upload) - Hidden by default -->
+        <section id="admin-section" class="section">
+            <div class="container">
+                <h2>Content Management</h2>
+                <div class="admin-tabs">
+                    <button class="admin-tab active" data-tab="upload-questions">Upload Questions</button> 
+                    <button class="admin-tab" data-tab="manage-questions">Manage Questions</button>
+                </div>
+                
+                <div class="admin-content active" id="upload-questions">
+                    <form id="question-upload-form">
+                        <div class="form-group">
+                            <label for="question-type">Question Type</label>
+                            <select id="question-type" required>
+                                <option value="">Select type</option>
+                                <option value="practice">Practice Question</option>
+                                <option value="test">Test Question</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="question-text">Question Text</label>
+                            <textarea id="question-text" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="question-subject">Subject</label>
+                            <select id="question-subject" required>
+                                <option value="">Select subject</option>
+                                <option value="social-studies">Social Studies</option>
+                                <option value="mathematics">Mathematics</option>
+                                <option value="integrated-science">Integrated Science</option>
+                                <option value="english">English</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Options (Mark correct answer)</label>
+                            <div class="options-container">
+                                <div class="option-item">
+                                    <input type="radio" name="correct-option" value="0" required>
+                                    <input type="text" class="option-text" placeholder="Option 1" required>
+                                </div>
+                                <div class="option-item">
+                                    <input type="radio" name="correct-option" value="1">
+                                    <input type="text" class="option-text" placeholder="Option 2" required>
+                                </div>
+                            </div>
+                            <button type="button" class="btn-secondary" id="add-option-btn">Add Another Option</button>
+                        </div>
+                        <div class="form-group">
+                            <label for="question-image">Image URL (Optional)</label>
+                            <input type="url" id="question-image" placeholder="https://example.com/image.jpg">
+                        </div>
+                        <div class="form-group">
+                            <label for="question-audio">Audio URL (Optional)</label>
+                            <input type="url" id="question-audio" placeholder="https://example.com/audio.mp3">
+                        </div>
+                        <div class="form-group">
+                            <label for="question-explanation">Explanation (Optional)</label>
+                            <textarea id="question-explanation" rows="2"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">Upload Question</button>
+                    </form>
+                </div>
+                
+                <!-- Add this to your index.html, inside the admin-section -->
+<div class="admin-content" id="manage-questions">
+    <div class="search-filter">
+        <input type="text" id="question-search" placeholder="Search questions...">
+        <select id="question-filter-subject">
+            <option value="all">All Subjects</option>
+            <option value="social-studies">Social Studies</option>
+            <option value="mathematics">Mathematics</option>
+            <option value="integrated-science">Integrated Science</option>
+            <option value="english">English</option>
+        </select>
+        <select id="question-filter-type">
+            <option value="all">All Types</option>
+            <option value="practice">Practice Questions</option>
+            <option value="test">Test Questions</option>
+        </select>
+        <button id="bulk-upload-btn" class="btn-secondary">Bulk Upload</button>
+    </div>
+    
+    <div class="questions-list-container">
+        <div class="questions-list-header">
+            <span class="header-id">ID</span>
+            <span class="header-question">Question</span>
+            <span class="header-subject">Subject</span>
+            <span class="header-type">Type</span>
+            <span class="header-actions">Actions</span>
+        </div>
+        <div class="questions-list" id="admin-questions-list">
+            <!-- Questions will be loaded here -->
+        </div>
+        <div class="pagination-controls">
+            <button id="prev-page-btn" disabled>&laquo; Previous</button>
+            <span id="page-info">Page 1 of 1</span>
+            <button id="next-page-btn" disabled>Next &raquo;</button>
+        </div>
+    </div>
+</div>
+
+<!-- Bulk Upload Modal -->
+<div class="modal" id="bulk-upload-modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Bulk Upload Questions</h2>
+        <div class="upload-instructions">
+            <p>Upload a CSV file with questions. <a href="/templates/questions_template.csv" download>Download template</a></p>
+            <p>Required columns: question, subject, type, option1, option2, option3, option4, correctAnswer, explanation</p>
+        </div>
+        <form id="bulk-upload-form">
+            <div class="form-group">
+                <label for="bulk-file">Select CSV File</label>
+                <input type="file" id="bulk-file" accept=".csv" required>
+            </div>
+            <div class="form-group">
+                <label for="bulk-subject">Default Subject</label>
+                <select id="bulk-subject" required>
+                    <option value="">Select subject</option>
+                    <option value="social-studies">Social Studies</option>
+                    <option value="mathematics">Mathematics</option>
+                    <option value="integrated-science">Integrated Science</option>
+                    <option value="english">English</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="bulk-type">Default Question Type</label>
+                <select id="bulk-type" required>
+                    <option value="practice">Practice Question</option>
+                    <option value="test">Test Question</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-primary">Upload Questions</button>
+        </form>
+    </div>
+</div>
+        </section>
+    </main>
+
+    <!-- Auth Modals -->
+    <div class="modal" id="login-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Login to Your Account</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <div class="form-options">
+                    <label>
+                        <input type="checkbox" id="remember-me"> Remember me
+                    </label>
+                    <a href="#" id="forgot-password">Forgot password?</a>
+                </div>
+                <button type="submit" class="btn-primary">Login</button>
+            </form>
+            <div class="auth-switch">
+                <p>Don't have an account? <a href="#" id="switch-to-register">Register</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="register-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Create Your Account</h2>
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="register-name">Full Name</label>
+                    <input type="text" id="register-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-email">Email</label>
+                    <input type="email" id="register-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Password</label>
+                    <input type="password" id="register-password" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-confirm-password">Confirm Password</label>
+                    <input type="password" id="register-confirm-password" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-phone">Phone Number (for Mobile Money)</label>
+                    <input type="tel" id="register-phone">
+                </div>
+                <button type="submit" class="btn-primary">Register</button>
+            </form>
+            <div class="auth-switch">
+                <p>Already have an account? <a href="#" id="switch-to-login">Login</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="payment-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Complete Your Registration</h2>
+            <p>To access all features, please complete your payment of GHS 50.00</p>
+            
+            <div class="payment-options">
+                <div class="payment-method active" data-method="mobile-money">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>Mobile Money</span>
+                </div>
+                <div class="payment-method" data-method="paystack">
+                    <i class="fas fa-credit-card"></i>
+                    <span>Paystack (Card)</span>
+                </div>
+                <div class="payment-method" data-method="bank-transfer">
+                    <i class="fas fa-university"></i>
+                    <span>Bank Transfer</span>
+                </div>
+            </div>
+            
+            <div class="payment-details" id="mobile-money-details">
+                <form id="mobile-money-form">
+                    <div class="form-group">
+                        <label for="mm-network">Mobile Network</label>
+                        <select id="mm-network" required>
+                            <option value="">Select network</option>
+                            <option value="mtn">MTN</option>
+                            <option value="vodafone">Vodafone</option>
+                            <option value="airteltigo">AirtelTigo</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="mm-number">Mobile Number</label>
+                        <input type="tel" id="mm-number" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Pay with Mobile Money</button>
+                </form>
+            </div>
+            
+            <div class="payment-details" id="paystack-details" style="display: none;">
+                <p>You will be redirected to Paystack to complete your payment with card or bank account.</p>
+                <button id="paystack-btn" class="btn-primary">Proceed to Paystack</button>
+            </div>
+            
+            <div class="payment-details" id="bank-transfer-details" style="display: none;">
+                <p>Make a transfer to:</p>
+                <div class="bank-info">
+                    <p><strong>Bank:</strong> Ghana Commercial Bank</p>
+                    <p><strong>Account Name:</strong> Ghana eLearn Ltd</p>
+                    <p><strong>Account Number:</strong> 1234567890</p>
+                    <p><strong>Branch:</strong> Accra Main</p>
+                    <p><strong>Reference:</strong> Your email address</p>
+                </div>
+                <p>After payment, send your receipt to payments@ghanaelearn.com</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3>Ghana eLearn</h3>
+                    <p>Providing quality exam preparation materials for Ghanaian students since 2023.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#" class="footer-home-link">Home</a></li>
+                        <li><a href="#" class="footer-practice-link">Practice Questions</a></li>
+                        <li><a href="#" class="footer-test-link">Take a Test</a></li>
+                        <li><a href="#" class="footer-contact-link">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@ghanaelearn.com</li>
+                        <li><i class="fas fa-phone"></i> +233 123 456 789</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Accra, Ghana</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Powered by Donorics Technologies</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+<!-- Add Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-analytics-compat.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
